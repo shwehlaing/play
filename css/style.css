@@ -1,0 +1,33 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 40px;
+  }
+
+  #container {
+    text-align: center;
+    position: relative;
+  }
+
+  #randomImage {
+    width: 50%;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+    margin: 5% auto 5%;
+    object-fit: contain;
+  }
+
+  #soundButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px; /* 必要に応じて上部のマージンを調整 */
+  }
+
+  #mainImage{
+    width: 80%;
+  }

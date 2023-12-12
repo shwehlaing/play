@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Random Image with Sound</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div id="container">
+        Wie geht es Ihnen heute?
+        <img id="mainImage" src="images/fortune.png" alt="Random Image">
+        <img id="randomImage" src="" style="display: none" alt="Random Image">
+        <div id="controlButtons">
+            <button onclick="startRandomImage()">Start</button>
+            <button onclick="stopRandomImage()">Stop</button>
+        </div>
+        <div id="soundButton">
+        <button id="playWavButton" onclick="playRandomWav()" style="display: none;">Play WAV</button>
+        </div>
+    </div>
+    <script>
+        let intervalId;
+        //wanna connect firebase temp version
+        const images = [
+            'images/p1.jpg',
+            'images/p2.jpg',
+            'images/p3.jpg',
+            'images/p4.jpg',
+            'images/p5.jpg',
+            'images/p6.jpg',
+            // Add more image paths here
+        ];
+
+        const wavs = [
+        'sounds/IMG_4687.wav',
+        'sounds/IMG_4689.wav',
+        'sounds/IMG_7484.wav',
+        'sounds/IMG_7623.wav',
+        'sounds/IMG_7925.wav',
+        'sounds/IMG_8001.wav',
+      // Add more wav file paths here
+    ];
+
+        function startRandomImage() {
+            document.getElementById('mainImage').style.display = 'none';
+            document.getElementById('randomImage').style.display = 'block';
+            const randomIndex = Math.floor(Math.random() * images.length);
+            const randomImage = images[randomIndex];
+            document.getElementById('randomImage').src = randomImage;
+
+            const sound = document.getElementById('sound');
+            //sound.play();
+
+            intervalId = setInterval(changeImage, 50); // Change image every 3 seconds (3000 milliseconds)
+        }
+
+        function stopRandomImage() {
+            clearInterval(intervalId);
+            const sound = document.getElementById('sound');
+            //sound.pause();
+            //sound.currentTime = 0; // Reset audio to start position
+            document.getElementById('playWavButton').style.display = 'block';
+    
+        }
+
+        function changeImage() {
+            const randomIndex = Math.floor(Math.random() * images.length);
+            const randomImage = images[randomIndex];
+            document.getElementById('randomImage').src = randomImage;
+        }
+
+        function playRandomWav() {
+            const randomIndex = Math.floor(Math.random() * wavs.length);
+            const randomWav = wavs[randomIndex];
+            const audio = new Audio(randomWav);
+            audio.play();
+    }
+    </script>
+</body>
+
+</html>
